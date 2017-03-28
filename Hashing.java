@@ -1,3 +1,8 @@
+//Created by sidhant
+//27/03/2017
+
+//Hashing in combination with modulo and chainig
+
 import java.util.*;
 class node
 {
