@@ -26,18 +26,15 @@ public class Hashing
         for (int i=0;i<n;i++)
         {
             int k=in.nextInt();
-            if (m[k%n].value==0)
+            node p=m[k%n];
+            while (p.next!=null)
             {
-               m[k%(n)].value=k;
-               m[k%(n)].next=null;
+                p=p.next;
             }
-            else
-            {
-                node a =new node();
-                a.value=k;
-                a.next=null;
-                m[k%n].next=a;
-            }
+            node a =new node();
+            a.value=k;
+            p.next=a;
+            a.next=null;
         }
         for (int i=0;i<n;i++)
         {
@@ -67,4 +64,5 @@ public class Hashing
         System.out.println("Number not found");
     }
 }
+    
     
