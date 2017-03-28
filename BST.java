@@ -1,3 +1,8 @@
+//Created by sidhant 
+//27/03/2017
+
+//Deletion of a node or vertices is in progress.
+
 import java.util.*;
 class node
 {
