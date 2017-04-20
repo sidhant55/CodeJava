@@ -37,6 +37,7 @@ public class Heap
         System.out.println("Enter "+n+" elements");
         for (int i=0;i<n;i++)
         a[i]=in.nextInt();
+        
         for (int i=n/2;i>=1;i--)
         {
             //System.out.println(i);
