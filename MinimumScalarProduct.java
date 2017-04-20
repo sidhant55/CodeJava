@@ -54,6 +54,5 @@ public class min
          System.out.println(sum);
             }
 
-
     }
     }
