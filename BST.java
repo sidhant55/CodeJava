@@ -38,6 +38,7 @@ public class BST
     }
     public static void main (String args[])
     {
+        
         Scanner in=new Scanner (System.in);
         node head=null;
         int c=0;
