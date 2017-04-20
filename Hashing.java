@@ -38,6 +38,7 @@ public class Hashing
         }
         for (int i=0;i<n;i++)
         {
+            
             node b=m[i];
             while(b!=null)
             {
