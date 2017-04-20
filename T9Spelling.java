@@ -34,6 +34,7 @@ public class keypad
             for(int j=0;j<l-1;j++)
             {
                 ch1=y.charAt(j);
+                
                 ch2=y.charAt(j+1);
 
                 for(int k=0;k<10;k++)
