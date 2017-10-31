@@ -1,64 +1,77 @@
-//Created by Sidhant
-//27/03/2017
+package Data_Structure;
 
-//Basic implementation of heap
-
-import java.io.*;
 import java.util.*;
+
 public class Heap
 {
-    static int n;
-    static void MaxHeapify(int a[], int i)
+    public void sort(int arr[])
     {
-        int l=2*i;
-        int r=2*i+1;
-        int largest;
-        if (l<=n && a[l-1]>a[i-1])
-        largest=l;
-        else
-        largest=i;
-        if (r<=n && a[r-1]>a[largest-1])
-        largest=r;
-        if (largest!=i)
+        int n = arr.length;
+        printArray(arr);
+        // Build heap (rearrange array)
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+        printArray(arr);
+        // One by one extract an element from heap
+        for (int i=n-1; i>=0; i--)
         {
-            int temp=a[i-1];
-            a[i-1]=a[largest-1];
-            a[largest-1]=temp;
-            MaxHeapify(a,largest);
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // call max heapify on the reduced heap
+            heapify(arr, i, 0);
         }
     }
+
+    // To heapify a subtree rooted with node i which is
+    // an index in arr[]. n is size of heap
+    void heapify(int arr[], int n, int i)
+    {
+        int largest = i;  // Initialize largest as root
+        int l = 2*i + 1;  // left = 2*i + 1
+        int r = 2*i + 2;  // right = 2*i + 2
+
+        // If left child is larger than root
+        if (l < n && arr[l] > arr[largest])
+            largest = l;
+
+        // If right child is larger than largest so far
+        if (r < n && arr[r] > arr[largest])
+            largest = r;
+
+        // If largest is not root
+        if (largest != i)
+        {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            // Recursively heapify the affected sub-tree
+            heapify(arr, n, largest);
+        }
+    }
+
+    /* A utility function to print array of size n */
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+
+    // Driver program
     public static void main(String args[])
     {
-        Scanner in=new Scanner (System.in);
-        System.out.println("Welcome");
-        System.out.println("Enter size of the array");
-        n=in.nextInt();
-        int a[]=new int [n];
-        System.out.println("Enter "+n+" elements");
-        for (int i=0;i<n;i++)
-        a[i]=in.nextInt();
-        
-        for (int i=n/2;i>=1;i--)
-        {
-            //System.out.println(i);
-            MaxHeapify(a,i);
-        }
-        System.out.println();
-        System.out.println("Building max heap");
-        for (int i=0;i<n;i++)
-        System.out.print(a[i]+" ");
-        System.out.println();
-        System.out.println("Heap Sort");
-        for (int i=n;i>=1;i--)
-        {
-            System.out.print(a[0]+" ");
-            int temp=a[0];
-            a[0]=a[i-1];
-            temp=a[i-1];
-            n=n-1;
-            MaxHeapify(a,1);
-        }
-        
+        int arr[] = {12, 11, 13, 5, 6, 7};
+        int n = arr.length;
+
+        Heap ob = new Heap();
+        ob.sort(arr);
+
+        System.out.println("Sorted array is");
+        printArray(arr);
     }
 }
-        
